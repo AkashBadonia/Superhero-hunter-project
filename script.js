@@ -37,7 +37,10 @@ async function getCharsArray() {
     });
   });
 
-  const favHerosArrayData = getFavData().split(",");
+  let favHerosArrayData = getFavData();
+  if (getFavData()) {
+    favHerosArrayData = favHerosArrayData.split(",");
+  }
   console.log(favHerosArrayData[0]);
   if (favHerosArrayData[0]) {
     favHerosArrayData.forEach((id) => {

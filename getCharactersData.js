@@ -1,6 +1,6 @@
 export { getCharsData };
 const baseURL =
-  "http://gateway.marvel.com/v1/public/characters?ts=1&apikey=0fef2c5e0f7688fcc0be776bc8b0afc9&hash=a7d4e8e00ff94c58956b6f590e7ef441&limit=20";
+  "https://gateway.marvel.com/v1/public/characters?ts=1&apikey=0fef2c5e0f7688fcc0be776bc8b0afc9&hash=a7d4e8e00ff94c58956b6f590e7ef441&limit=20";
 const cacheKey = "marvel_cache_key";
 
 const expirationTime = 24 * 3600 * 1000;

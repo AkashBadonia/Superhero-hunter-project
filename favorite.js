@@ -4,7 +4,10 @@ const favHeroKey = "fav_Hero_Key";
 
 async function getFavHeros() {
   const charsArray = await getCharsData();
-  const favHerosArray = getFavData().split(",");
+  let favHerosArray = getFavData();
+  if (getFavData()) {
+    favHerosArray = getFavData().split(",");
+  }
   if (favHerosArray[0]) {
     favHerosArray.forEach((id) => {
       const charsArrayEl = charsArray.find((char) => char.id == id);
