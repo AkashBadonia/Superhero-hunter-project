@@ -10,7 +10,7 @@ export { favHeroKey, getFavData };
 async function getCharsArray() {
   // getting the array of characters
   charsArray = await getCharsData();
-  console.log(charsArray);
+  // console.log(charsArray);
 
   // creating all charcters
   charsArray.forEach((char) => createCharCard(char, "Add to", "charCardsContIndex"));
@@ -18,7 +18,7 @@ async function getCharsArray() {
 
   searchBar.addEventListener("keyup", (event) => {
     const searchInput = event.target.value.toLowerCase().replace(/ /g, "").replace(/-/g, "").replace(/\./g, "").trim();
-    console.log(searchInput);
+    // console.log(searchInput);
     allCharacters.forEach((char) => {
       if (char.getAttribute("data-name").includes(searchInput)) {
         char.style.display = "";
@@ -31,24 +31,23 @@ async function getCharsArray() {
   const allFavBtnEl = document.querySelectorAll(".addtoFavBtn");
   allFavBtnEl.forEach((btn) => {
     btn.addEventListener("click", () => {
-      console.log(btn.parentElement.id);
+      // console.log(btn.parentElement.id);
       addToFavArray(btn.parentElement.id);
-      console.log(localStorage.getItem(favHeroKey));
+      // console.log(localStorage.getItem(favHeroKey));
     });
   });
-
   let favHerosArrayData = getFavData();
   if (getFavData()) {
     favHerosArrayData = favHerosArrayData.split(",");
   }
-  console.log(favHerosArrayData[0]);
-  if (favHerosArrayData[0]) {
-    favHerosArrayData.forEach((id) => {
-      const favCharArray = Array.from(allCharacters);
-      const favChar = favCharArray.find((char) => char.id == id);
-      console.log(favChar);
-      favChar.classList.add("favHero");
-    });
+  if (favHerosArrayData) {
+    if (favHerosArrayData[0]) {
+      favHerosArrayData.forEach((id) => {
+        const favCharArray = Array.from(allCharacters);
+        const favChar = favCharArray.find((char) => char.id == id);
+        favChar.classList.add("favHero");
+      });
+    }
   }
 }
 getCharsArray();

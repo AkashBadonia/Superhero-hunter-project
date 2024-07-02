@@ -28,7 +28,7 @@ async function getCharsData() {
       // console.log(characters);
       allCharacters = allCharacters.concat([...characters]);
       // console.log(allCharacters);
-      offset += 150;
+      offset += 450;
       total = responseJson.data.total;
     } while (offset < total);
     cacheData(allCharacters);

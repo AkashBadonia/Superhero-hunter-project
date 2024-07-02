@@ -8,18 +8,20 @@ async function getFavHeros() {
   if (getFavData()) {
     favHerosArray = getFavData().split(",");
   }
-  if (favHerosArray[0]) {
-    favHerosArray.forEach((id) => {
-      const charsArrayEl = charsArray.find((char) => char.id == id);
-      createCharCard(charsArrayEl, "Remove from", "charCardsContFavorite");
-    });
+  if (favHerosArray) {
+    if (favHerosArray[0]) {
+      favHerosArray.forEach((id) => {
+        const charsArrayEl = charsArray.find((char) => char.id == id);
+        createCharCard(charsArrayEl, "Remove from", "charCardsContFavorite");
+      });
+    }
   }
   const allFavBtnEl = document.querySelectorAll(".removefromFavBtn");
   allFavBtnEl.forEach((btn) => {
     btn.addEventListener("click", () => {
-      console.log(btn.parentElement.id);
+      // console.log(btn.parentElement.id);
       removeFromFavArray(btn.parentElement.id);
-      console.log(localStorage.getItem(favHeroKey));
+      // console.log(localStorage.getItem(favHeroKey));
       btn.parentElement.remove();
     });
   });
@@ -33,7 +35,7 @@ function removeFromFavArray(id) {
   }
   if (dataArray.includes(id)) {
     const indexOfId = dataArray.findIndex((currEl) => currEl == id);
-    console.log(indexOfId);
+    // console.log(indexOfId);
     dataArray.splice(indexOfId, 1);
     const cardContWithId = document.getElementById(id);
     cardContWithId.classList.toggle("favHero");
